@@ -3,6 +3,8 @@ import React from "react";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 
+import "./App.css";
+
 const data = [
   {
     task: "Organize Garage",
@@ -37,7 +39,8 @@ class App extends React.Component {
   };
 
   toggleItem = (itemId) => {
-    this.state({
+    console.log(itemId);
+    this.setState({
       data: this.state.data.map((item) => {
         if (item.id === itemId) {
           return {
@@ -50,7 +53,7 @@ class App extends React.Component {
     });
   };
 
-  clearPurchased = () => {
+  clearCompleted = () => {
     this.setState({
       data: this.state.data.filter((item) => {
         return !item.completed;
@@ -65,7 +68,7 @@ class App extends React.Component {
           <h2>Welcome to your Todo App!</h2>
           <TodoList data={this.state.data} toggleItem={this.toggleItem} />
         </div>
-        <TodoForm addItem={this.addItem} />
+        <TodoForm addItem={this.addItem} clearCompleted={this.clearCompleted} />
       </div>
     );
   }

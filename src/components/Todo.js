@@ -1,4 +1,5 @@
 import React from "react";
+import "./Todo.css";
 
 class Todo extends React.Component {
   clickHandler = (e) => {
@@ -9,9 +10,9 @@ class Todo extends React.Component {
     return (
       <div
         onClick={this.clickHandler}
-        className={`item${this.props.item.completed ? " completed" : ""}`}
+        className={`item ${this.props.item.completed ? "completed" : ""}`}
       >
-        <p>{this.props.item.name}</p>
+        <p>{this.props.item.task}</p>
       </div>
     );
   }
