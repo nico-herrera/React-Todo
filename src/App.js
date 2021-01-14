@@ -25,7 +25,9 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      data: data,
+      data: JSON.parse(localStorage.getItem("Task"))
+        ? JSON.parse(localStorage.getItem("Task"))
+        : data,
     };
   }
 
@@ -36,6 +38,13 @@ class App extends React.Component {
         { task: itemName, id: Date.now(), completed: false },
       ],
     });
+    localStorage.setItem(
+      "Task",
+      JSON.stringify([
+        ...this.state.data,
+        { task: itemName, id: Date.now(), completed: false },
+      ])
+    );
   };
 
   toggleItem = (itemId) => {
